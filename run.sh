@@ -2,7 +2,7 @@
 
 
 case "$OSTYPE" in
-  linux*)   echo "detected OS is LINUX" 
+  linux*|darwin*)   echo "detected OS is LINUX" 
   
     # Check arguments
     if [ $# -eq 0 ]

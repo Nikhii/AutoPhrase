@@ -47,6 +47,7 @@ case "$OSTYPE" in
         
         # Execute autophrase
         sudo docker exec -it autophrase ./auto_phrase.sh
+        sudo docker exec -it autophrase ./phrasal_segmentation.sh
 
         # Export output models to our computer
         docker cp autophrase:/autophrase/models/$LANG/"$filename" models/$LANG/

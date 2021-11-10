@@ -25,7 +25,7 @@ case "$OSTYPE" in
         echo current file is "$filename"
 
         # Run docker container using custom data, pos tagging and segmentation
-        sudo docker run -d -v "/${PWD}/data":/autophrase/data -v "/${PWD}/models":/autophrase/models -it\
+        docker run -d -v "/${PWD}/data":/autophrase/data -v "/${PWD}/models":/autophrase/models -it\
             --name autophrase \
             -e RAW_TRAIN=${file} \
             -e ENABLE_POS_TAGGING=1 \
@@ -46,8 +46,8 @@ case "$OSTYPE" in
         fi
         
         # Execute autophrase
-        sudo docker exec -it autophrase ./auto_phrase.sh
-        sudo docker exec -it autophrase ./phrasal_segmentation.sh
+        docker exec -it autophrase ./auto_phrase.sh
+        docker exec -it autophrase ./phrasal_segmentation.sh
 
         # Export output models to our computer
         docker cp autophrase:/autophrase/models/$LANG/"$filename" models/$LANG/

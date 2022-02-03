@@ -46,11 +46,14 @@ case "$OSTYPE" in
         fi
         
         # Execute autophrase
-        docker exec -it autophrase ./auto_phrase.sh
-        docker exec -it autophrase ./phrasal_segmentation.sh
+        docker exec autophrase ./auto_phrase.sh
+        docker exec autophrase ./phrasal_segmentation.sh
+
+        mkdir models
+        mkdir models/$LANG
 
         # Export output models to our computer
-        docker cp autophrase:/autophrase/models/$LANG/"$filename" models/$LANG/
+        docker cp autophrase:/autophrase/models/$LANG/"$filename" models/$LANG/"$filename"
 
         # Stop and delete docker container
         docker container stop autophrase
